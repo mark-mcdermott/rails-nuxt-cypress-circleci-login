@@ -1,0 +1,23 @@
+@use "@picocss/pico/scss/pico" with (
+  $semantic-root-element: "#__nuxt > div > div",
+  $enable-semantic-container: true,
+  $enable-classes: false
+);
+
+header hgroup {
+  display: flex;
+  justify-content: space-between;
+  
+  h1 {
+    padding: var(--pico-form-element-spacing-vertical) var(--pico-form-element-spacing-horizontal) var(--pico-form-element-spacing-vertical) 0;
+
+    a {
+      color: var(--pico-color-primary);
+      text-decoration: none;
+    }
+  }
+}
+
+main > section > header {
+  margin-bottom: 3rem;
+}

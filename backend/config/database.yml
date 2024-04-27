@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: postgres
+  # host: localhost
+  username: <%= Rails.application.credentials.dig(:db, :username) %>
+  password: <%= Rails.application.credentials.dig(:db, :password) %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: backend_development
+
+test:
+  <<: *default
+  database: backend_test
+
+production:
+  <<: *default
+  database: backend_production
+  username: backend
+  password: <%= ENV["RAILS_7_WITH_DOCKER_DATABASE_PASSWORD"] %>

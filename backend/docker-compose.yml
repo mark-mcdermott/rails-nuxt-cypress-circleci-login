@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+
+  # Service for the Ruby on Rails web application
+  # backend:
+  #   build: .
+  #   working_dir: /app/backend
+  #   command: bundle exec rails s -p 3000 -b '0.0.0.0'
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - .:/app
+  #   depends_on:
+  #     - db
+  #   environment:
+  #     DATABASE_URL: postgres://postgres:postgres@db:5432/backend
+
+  backend:
+    build: .
+    working_dir: /app  # Changed from /app/backend
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app  # This is correct if your Rails app is at the project root
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/backend
+      
+  # Service for the PostgreSQL database
+  db:
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      
+# Define a volume for storing PostgreSQL data
+volumes:
+  postgres_data:
+
+  
