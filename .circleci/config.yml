@@ -23,6 +23,9 @@ jobs:
             docker-compose run backend rspec
       - store_artifacts:
           path: backend/coverage
+    environment:
+      RAILS_ENV: test
+      DATABASE_HOST: postgres
 
   end_to_end_tests:
     machine:
