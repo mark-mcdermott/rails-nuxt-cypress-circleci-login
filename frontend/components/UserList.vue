@@ -11,15 +11,16 @@
 
 <script>
 export default {
-  data: () => ({
-    users: [
-      { id: 1, name: 'Luke Skywalker' },
-      { id: 2, name: 'Leia Organa' },
-      { id: 3, name: 'Han Solo' }
-    ]
-  }),
-  // async fetch() {
-  //   this.users = await this.$axios.$get('users')
-  // }
+  data: () => ({ users: [] }),
+  async fetch() {
+    this.users = await this.$axios.$get('starwars')
+  }
+  // data: () => ({
+  //   users: [
+  //     { id: 1, name: 'Luke Skywalker' },
+  //     { id: 2, name: 'Leia Organa' },
+  //     { id: 3, name: 'Han Solo' }
+  //   ]
+  // }),
 }
 </script>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  get "health", to: "health#index"
   resources :users
+  resources :starwars
+  get "health", to: "health#index"
 end
